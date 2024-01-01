@@ -6,20 +6,23 @@
     <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="./assets/js/plugins/chartjs.min.js"></script>
+    
     <script>
+ 
       var ctx1 = document.getElementById("chart-line").getContext("2d");
-
       var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
+      var kasData = <?php echo json_encode($kas_data); ?>;
+      var totals = kasData.map(obj => obj.total);
+      console.log(kasData);
       gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
       gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
       gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
       new Chart(ctx1, {
         type: "line",
         data: {
-          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
           datasets: [{
-            label: "Mobile apps",
+            label: "Data",
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
@@ -27,7 +30,7 @@
             backgroundColor: gradientStroke1,
             borderWidth: 3,
             fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            data: totals,
             maxBarThickness: 6
 
           }],

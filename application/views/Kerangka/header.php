@@ -29,11 +29,12 @@
   <link href="<?= base_url('assets/') ?>css/nucleo-icons.css" rel="stylesheet" />
   <link href="<?= base_url('assets/') ?>css/nucleo-svg.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  
+  <script src="https://kit.fontawesome.com/24bb2e48ac.js" crossorigin="anonymous"></script> 
+
   <link href="<?= base_url('assets/') ?>css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="<?= base_url('assets/') ?>css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="g-sidenav-show   bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
@@ -49,7 +50,7 @@
       <?php if ($user['role'] == 'Owner') : ?>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="<?php echo base_url('Beranda/') ?>">
+            <a class="nav-link" href="<?= base_url('Beranda/') ?>">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
               </div>
@@ -64,10 +65,26 @@
               <span class="nav-link-text ms-1">History Report</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('Beranda/info_barista') ?>">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-users text-info text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Info Barista</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('Beranda/info_menu') ?>">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-list-ul text-danger text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Info Menu</span>
+            </a>
+          </li>
         <?php elseif ($user['role'] == 'Barista') : ?>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link " href="./pages/billing.html">
+              <a class="nav-link " href="<?= base_url('Beranda/tambah_report') ?>">
                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                 </div>
@@ -75,11 +92,11 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="./pages/virtual-reality.html">
+              <a class="nav-link " href="<?= base_url('Beranda/edit_report') ?>">
                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="ni ni-app text-info text-sm opacity-10"></i>
                 </div>
-                <span class="nav-link-text ms-1"></span>
+                <span class="nav-link-text ms-1">Edit Report</span>
               </a>
             </li>
             <li class="nav-item">
@@ -94,14 +111,14 @@
         <?php endif; ?>
     </div>
   </aside>
-  <main class="main-content position-relative border-radius-lg ">
+  <main class="main-content position-relative border-radius-lg">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page"><?php echo $judul?></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page"><?php echo $judul ?></li>
           </ol>
           <h6 class="font-weight-bolder text-white mb-0"><?php echo $judul ?></h6>
         </nav>

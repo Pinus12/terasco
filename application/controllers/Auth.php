@@ -49,8 +49,11 @@ class Auth extends CI_Controller
                 
                 if ($user['role'] == 'Owner') {
                     redirect('Beranda');
-                } else {
-                    redirect('Beranda');
+                } elseif ($user['role'] == 'Barista') {
+                    redirect('Beranda/tambah_report');
+                } 
+                else {
+                    redirect('Auth');
                 }
             } else {
                 echo 'Password Salah';
